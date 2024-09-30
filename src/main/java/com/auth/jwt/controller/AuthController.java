@@ -28,8 +28,8 @@ public class AuthController {
     }
 
     @PostMapping("/validate")
-    public ResponseEntity<TokenDto> validate(@RequestParam String token){
-        TokenDto tokenDto = authService.validate(token);
+    public ResponseEntity<TokenDto> validate(@RequestParam String token,@RequestBody RequestDto requestDto  ){
+        TokenDto tokenDto = authService.validate(token, requestDto);
         if(tokenDto == null){
             return ResponseEntity.badRequest().build();
         }

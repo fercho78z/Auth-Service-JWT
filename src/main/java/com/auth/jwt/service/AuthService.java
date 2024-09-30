@@ -49,10 +49,10 @@ public class AuthService {
         }
         return null;
     }
-    //public TokenDto validate(String token, RequestDto requestDto){
-    public TokenDto validate(String token){
-        //if(!jwtProvider.validate(token,requestDto)){
-        	if(!jwtProvider.validate(token)){
+    public TokenDto validate(String token, RequestDto requestDto){
+    //public TokenDto validate(String token){
+        if(!jwtProvider.validate(token,requestDto)){
+        	//if(!jwtProvider.validate(token)){
             return null;
         }
         String userName = jwtProvider.getUserNameFromToken(token);

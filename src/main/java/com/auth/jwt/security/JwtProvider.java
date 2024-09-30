@@ -65,20 +65,23 @@ public class JwtProvider {
                 .compact();*/
     }
 
-    //public boolean validate(String token, RequestDto requestDto){
-    public boolean validate(String token){
+    public boolean validate(String token, RequestDto requestDto){
+   // public boolean validate(String token){
     try{
             //Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
             Jwts.parser().verifyWith(Keys.hmacShaKeyFor(secret.getEncoded())).build().parseSignedClaims(token);
         }catch (Exception exception){
             return false;
         }
-    //if(!isAdmin(token) && routeValidator.isAdmin(requestDto)){
-      /*  if(!isAdmin(token)){
+    if(!isAdmin(token) && routeValidator.isAdmin(requestDto)){
+        if(!isAdmin(token)){
             return false;
-        }*/
-        return true;
+        }
+       
     }
+    return true;
+    }
+    
 
     public String getUserNameFromToken(String token){
         try{
